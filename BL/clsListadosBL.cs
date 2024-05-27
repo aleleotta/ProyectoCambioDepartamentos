@@ -1,4 +1,6 @@
-﻿namespace BL
+﻿using Entities;
+
+namespace BL
 {
     public class clsListadosBL
     {

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 
-namespace DAL
+namespace MAUI.Models
 {
-    public class clsListadosDAL
+    public class clsPersonaDepartamento: clsPersona
     {
     }
 }

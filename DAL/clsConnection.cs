@@ -2,7 +2,7 @@
 {
     public class clsConnection
     {
-        protected string getConnection()
+        public static string getConnection()
         {
             return "server=alessandroleotta.database.windows.net;" +
                 "database=alessandroDB;" +
