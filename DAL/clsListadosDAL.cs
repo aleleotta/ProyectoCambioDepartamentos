@@ -97,9 +97,9 @@ namespace DAL
         }
 
         /// <summary>
-        /// 
+        /// Actualiza todas las personas que tienen el departamento cambiado en la base de datos.
         /// </summary>
-        /// <param name="listadoPersonasConCambio"></param>
+        /// <param name="listadoPersonasConCambio">El listado de personas con los departamentos cambiados</param>
         public void updateListadoPersonas(List<clsPersona> listadoPersonasConCambio) { }
     }
 }
