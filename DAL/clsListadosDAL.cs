@@ -100,6 +100,30 @@ namespace DAL
         /// Actualiza todas las personas que tienen el departamento cambiado en la base de datos.
         /// </summary>
         /// <param name="listadoPersonasConCambio">El listado de personas con los departamentos cambiados</param>
-        public void updateListadoPersonas(List<clsPersona> listadoPersonasConCambio) { }
+        public void updateListadoPersonas(List<clsPersona> listadoPersonasConCambio)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = clsConnection.getConnection();
+            SqlCommand cmd;
+            try
+            {
+                conn.Open();
+                cmd = conn.CreateCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "UPDATE Personas SET IDDepartamento = @idDept WHERE IDDepartamento != @idDept"; //@idDept se especificara adentro de un bucle.
+                conn.Close();
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }
