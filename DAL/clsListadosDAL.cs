@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
+using Microsoft.Data.SqlClient;
 
 namespace DAL
 {
@@ -11,7 +12,19 @@ namespace DAL
     {
         public List<clsPersona> getListadoCompletoPersonas()
         {
-            return new List<clsPersona>();
+            List<clsPersona> listadoPersonas = new List<clsPersona>();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = clsConnection.getConnection();
+            SqlCommand cmd = null;
+            try
+            {
+
+            }
+            catch (Exception err)
+            {
+                listadoPersonas = new List<clsPersona>();
+            }
+            return listadoPersonas;
         }
         public List<clsDepartamento> getListadoCompletoDepartamentos()
         {
