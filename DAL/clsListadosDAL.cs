@@ -9,7 +9,10 @@ using Microsoft.Data.SqlClient;
 namespace DAL
 {
     public class clsListadosDAL
-    {
+    {/// <summary>
+    /// Accede a la base de datos para recojer todos las personas y devolverlas como un listado.
+    /// </summary>
+    /// <returns>El listado de personas</returns>
         public List<clsPersona> getListadoCompletoPersonas()
         {
             List<clsPersona> listadoPersonas = new List<clsPersona>();
