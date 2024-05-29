@@ -110,7 +110,7 @@ namespace DAL
                 conn.Open();
                 cmd = conn.CreateCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "UPDATE Personas SET IDDepartamento = @idDept WHERE IDDepartamento != @idDept"; //@idDept se especificara adentro de un bucle.
+                cmd.CommandText = "UPDATE Personas SET IDDepartamento = @idDept WHERE ID != @id"; //@idDept y @id se especificaran adentro de un bucle. El listado pasado por parametro no es completo.
                 conn.Close();
             }
             catch (Exception err)
