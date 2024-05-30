@@ -14,7 +14,7 @@ namespace DAL
         /// Accede a la base de datos para recojer todas las personas y devolverlas como un listado.
         /// </summary>
         /// <returns>El listado de personas</returns>
-        public List<clsPersona> getListadoCompletoPersonas()
+        public static List<clsPersona> getListadoCompletoPersonas()
         {
             List<clsPersona> listadoPersonas = new List<clsPersona>();
             SqlConnection conn = new SqlConnection();
@@ -57,7 +57,7 @@ namespace DAL
         /// Accede a la base de datos para recojer todos los departamentos y devolverlos como un listado.
         /// </summary>
         /// <returns>El listado de departamentos</returns>
-        public List<clsDepartamento> getListadoCompletoDepartamentos()
+        public static List<clsDepartamento> getListadoCompletoDepartamentos()
         {
             List<clsDepartamento> listadoDepartamentos = new List<clsDepartamento>();
             SqlConnection conn = new SqlConnection();
@@ -100,7 +100,7 @@ namespace DAL
         /// Actualiza todas las personas que tienen el departamento cambiado en la base de datos.
         /// </summary>
         /// <param name="listadoPersonasConCambio">El listado de personas con los departamentos cambiados</param>
-        public void updateListadoPersonas(List<clsPersona> listadoPersonasConCambio)
+        public static void updateListadoPersonas(List<clsPersona> listadoPersonasConCambio)
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = clsConnection.getConnection();
