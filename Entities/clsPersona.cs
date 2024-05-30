@@ -19,7 +19,7 @@ namespace Entities
         public int Id { get => id; }
         public string Nombre { get => nombre; }
         public string Apellidos { get => apellidos; }
-        private int IdDept
+        public int IdDept
         {
             get => idDept;
             set => idDept = value;
