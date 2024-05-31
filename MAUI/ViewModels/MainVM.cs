@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Linq;
 using BL;
 using Entities;
-using MAUI.Models;
+using Models;
 using MAUI.Utilities;
 
 namespace MAUI.ViewModels

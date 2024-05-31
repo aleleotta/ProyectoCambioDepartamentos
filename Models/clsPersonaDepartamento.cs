@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace MAUI.Models
+namespace Models
 {
     public class clsPersonaDepartamento: clsPersona
     {
@@ -15,7 +15,6 @@ namespace MAUI.Models
             }
         }
 
-        public clsPersonaDepartamento() { }
         public clsPersonaDepartamento(clsPersona persona, clsDepartamento departamentoSeleccionado): base(persona)
         {
             this.departamentoSeleccionado = new clsDepartamento(departamentoSeleccionado);

@@ -53,12 +53,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Models\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BL\BL.csproj" />
 	  <ProjectReference Include="..\Entities\Entities.csproj" />
+	  <ProjectReference Include="..\Models\Models.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
