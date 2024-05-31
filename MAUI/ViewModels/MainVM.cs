@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Linq;
 using BL;
 using Entities;
 using MAUI.Models;
@@ -11,19 +12,19 @@ namespace MAUI.ViewModels
     public class MainVM : INotifyPropertyChanged
     {
         #region Attributes
-        private ObservableCollection<clsPersona> listadoPersonas;
-        private ObservableCollection<clsDepartamento> listadoDepartamentos;
+        private List<clsPersona> listadoPersonas;
+        private List<clsDepartamento> listadoDepartamentos;
         private ObservableCollection<clsPersonaDepartamento> listadoPersonasConDepartamento;
         private clsDepartamento departamentoSeleccionado;
         private DelegateCommand submit;
         #endregion
 
         #region Properties
-        public ObservableCollection<clsPersona> ListadoPersonas
+        public List<clsPersona> ListadoPersonas
         {
             get => listadoPersonas;
         }
-        public ObservableCollection<clsDepartamento> ListadoDepartamentos
+        public List<clsDepartamento> ListadoDepartamentos
         {
             get => listadoDepartamentos;
         }
@@ -62,11 +63,11 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoPersonas = new ObservableCollection<clsPersona>(clsListadosBL.getListadoPersonas());
+                listadoPersonas = new List<clsPersona>(clsListadosBL.getListadoPersonas());
             }
             catch
             {
-                listadoPersonas = new ObservableCollection<clsPersona>();
+                listadoPersonas = new List<clsPersona>();
             }
         }
 
@@ -77,11 +78,11 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoDepartamentos = new ObservableCollection<clsDepartamento>(clsListadosBL.getListadoDepartamentos());
+                listadoDepartamentos = new List<clsDepartamento>(clsListadosBL.getListadoDepartamentos());
             }
             catch
             {
-                listadoDepartamentos = new ObservableCollection<clsDepartamento>();
+                listadoDepartamentos = new List<clsDepartamento>();
             }
         }
 
@@ -90,7 +91,10 @@ namespace MAUI.ViewModels
         /// </summary>
         private void llenarListadoPersonasConDepartamento()
         {
-
+            foreach (clsPersona persona in listadoPersonas)
+            {
+                clsDepartamento dept = listadoDepartamentos.Find(dept => ); //TODO
+            }
         }
         #endregion
 
