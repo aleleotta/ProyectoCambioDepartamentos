@@ -16,7 +16,7 @@ namespace MAUI.Models
         }
 
         public clsPersonaDepartamento() { }
-        public clsPersonaDepartamento(clsDepartamento departamento)
+        public clsPersonaDepartamento(clsPersona persona, clsDepartamento departamento): base(persona)
         {
             this.departamento = new clsDepartamento(departamento);
         }
