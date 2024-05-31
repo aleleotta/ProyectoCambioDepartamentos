@@ -11,7 +11,7 @@ namespace Models
             get => departamentoSeleccionado;
             set
             {
-                if (value == null) departamentoSeleccionado = value;
+                if (value != null) departamentoSeleccionado = value;
             }
         }
 

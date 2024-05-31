@@ -11,18 +11,18 @@ namespace MAUI.ViewModels
     public class MainVM : INotifyPropertyChanged
     {
         #region Attributes
-        private List<clsPersona> listadoPersonas;
-        private List<clsDepartamento> listadoDepartamentos;
+        private ObservableCollection<clsPersona> listadoPersonas;
+        private ObservableCollection<clsDepartamento> listadoDepartamentos;
         private ObservableCollection<clsPersonaDepartamento> listadoPersonasConDepartamento;
         private DelegateCommand submit;
         #endregion
 
         #region Properties
-        public List<clsPersona> ListadoPersonas
+        public ObservableCollection<clsPersona> ListadoPersonas
         {
             get => listadoPersonas;
         }
-        public List<clsDepartamento> ListadoDepartamentos
+        public ObservableCollection<clsDepartamento> ListadoDepartamentos
         {
             get => listadoDepartamentos;
         }
@@ -65,11 +65,11 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoPersonas = new List<clsPersona>(clsListadosBL.getListadoPersonas());
+                listadoPersonas = new ObservableCollection<clsPersona>(clsListadosBL.getListadoPersonas());
             }
             catch
             {
-                listadoPersonas = new List<clsPersona>();
+                listadoPersonas = new ObservableCollection<clsPersona>();
             }
         }
 
@@ -80,11 +80,11 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoDepartamentos = new List<clsDepartamento>(clsListadosBL.getListadoDepartamentos());
+                listadoDepartamentos = new ObservableCollection<clsDepartamento>(clsListadosBL.getListadoDepartamentos());
             }
             catch
             {
-                listadoDepartamentos = new List<clsDepartamento>();
+                listadoDepartamentos = new ObservableCollection<clsDepartamento>();
             }
         }
 
