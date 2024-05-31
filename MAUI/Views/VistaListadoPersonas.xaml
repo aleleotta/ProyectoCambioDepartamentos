@@ -12,26 +12,24 @@
 
     <StackLayout Spacing="20">
         <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433}" VerticalOptions="FillAndExpand">
-            <ListView ItemsSource="{Binding ListadoPersonasConDepartamento}">
-                <ListView.Header>
+            <CollectionView ItemsSource="{Binding ListadoPersonasConDepartamento}">
+                <CollectionView.Header>
                     <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
                         <Label Text="Nombre" FontSize="Medium" HorizontalOptions="Center" Grid.Column="0"/>
                         <Label Text="Apellidos" FontSize="Medium" HorizontalOptions="Center" Grid.Column="1"/>
                         <Label Text="Departamento" FontSize="Medium" HorizontalOptions="Center" Grid.Column="2"/>
                     </Grid>
-                </ListView.Header>
-                <ListView.ItemTemplate>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                                <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-                                <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-                                <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
-                            </Grid>
-                        </ViewCell>
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                            <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                            <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                            <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Border>
         <Button Text="Submit" BackgroundColor="Navy" TextColor="White" MaximumWidthRequest="100"/>
     </StackLayout>
