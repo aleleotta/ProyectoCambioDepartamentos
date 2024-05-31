@@ -93,7 +93,7 @@ namespace MAUI.ViewModels
         {
             foreach (clsPersona persona in listadoPersonas)
             {
-                clsDepartamento dept = listadoDepartamentos.Find(dept => ); //TODO
+                clsDepartamento dept = listadoDepartamentos.Find(dept => dept.); //TODO
             }
         }
         #endregion
