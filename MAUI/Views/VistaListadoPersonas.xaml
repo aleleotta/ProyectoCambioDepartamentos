@@ -12,7 +12,7 @@
 
     <StackLayout Spacing="20">
         <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433}" VerticalOptions="FillAndExpand">
-            <ListView ItemsSource="{Binding ListadoPersonasConDepartamento}" SelectionMode="None">
+            <ListView ItemsSource="{Binding ListadoPersonasConDepartamento}">
                 <ListView.Header>
                     <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
                         <Label Text="Nombre" FontSize="Medium" HorizontalOptions="Center" Grid.Column="0"/>
@@ -24,9 +24,9 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                                <Label Text="{Binding Nombre}" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-                                <Label Text="{Binding Apellidos}" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-                                <Picker ItemsSource="{Binding ListadoDepartamentos}" ItemDisplayBinding="{Binding }" Grid.Column="2"/>
+                                <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                                <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                                <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
