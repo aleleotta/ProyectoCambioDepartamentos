@@ -15,7 +15,6 @@ namespace MAUI.ViewModels
         private List<clsPersona> listadoPersonas;
         private List<clsDepartamento> listadoDepartamentos;
         private ObservableCollection<clsPersonaDepartamento> listadoPersonasConDepartamento;
-        private clsDepartamento departamentoSeleccionado;
         private DelegateCommand submit;
         #endregion
 
@@ -32,17 +31,20 @@ namespace MAUI.ViewModels
         {
             get => listadoPersonasConDepartamento;
         }
-        public clsDepartamento DepartamentoSeleccionado
-        {
-            get => departamentoSeleccionado;
-            set
-            {
-                if (value != null) departamentoSeleccionado = value;
-            }
-        }
         public DelegateCommand Submit
         {
             get => submit;
+        }
+        #endregion
+
+        #region Command Executers
+        private void submit_execute()
+        {
+            //TODO
+        }
+        private bool submit_canExecute()
+        {
+            return true;
         }
         #endregion
 
@@ -51,7 +53,8 @@ namespace MAUI.ViewModels
         {
             llenarListadoPersonas();
             llenarListadoDepartamentos();
-            //TODO
+            llenarListadoPersonasConDepartamento();
+            submit = new DelegateCommand(submit_execute, submit_canExecute);
         }
         #endregion
 
@@ -93,7 +96,12 @@ namespace MAUI.ViewModels
         {
             foreach (clsPersona persona in listadoPersonas)
             {
-                clsDepartamento dept = listadoDepartamentos.Find(dept => dept.); //TODO
+                clsDepartamento dept = listadoDepartamentos.FirstOrDefault(dept => dept.Id == persona.IdDept);
+                if (dept != null)
+                {
+                    clsPersonaDepartamento personaConDepartamento = new clsPersonaDepartamento(persona, dept);
+                    listadoPersonasConDepartamento.Add(personaConDepartamento);
+                }
             }
         }
         #endregion

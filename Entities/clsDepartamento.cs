@@ -14,8 +14,8 @@ namespace Entities
         #endregion
 
         #region Properties
-        private int Id { get => id; }
-        private string NombreDept { get => nombreDept; }
+        public int Id { get => id; }
+        public string NombreDept { get => nombreDept; }
         #endregion
 
         #region Constructors

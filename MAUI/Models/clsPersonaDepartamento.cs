@@ -4,21 +4,21 @@ namespace MAUI.Models
 {
     public class clsPersonaDepartamento: clsPersona
     {
-        private clsDepartamento departamento;
+        private clsDepartamento departamentoSeleccionado; //Por defecto tendra el departamento ya asignado por la base de datos.
 
-        public clsDepartamento Departamento
+        public clsDepartamento DepartamentoSeleccionado
         {
-            get => departamento;
+            get => departamentoSeleccionado;
             set
             {
-                if (value == null) departamento = value;
+                if (value == null) departamentoSeleccionado = value;
             }
         }
 
         public clsPersonaDepartamento() { }
-        public clsPersonaDepartamento(clsPersona persona, clsDepartamento departamento): base(persona)
+        public clsPersonaDepartamento(clsPersona persona, clsDepartamento departamentoSeleccionado): base(persona)
         {
-            this.departamento = new clsDepartamento(departamento);
+            this.departamentoSeleccionado = new clsDepartamento(departamentoSeleccionado);
         }
     }
 }
