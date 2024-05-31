@@ -94,6 +94,7 @@ namespace MAUI.ViewModels
         /// </summary>
         private void llenarListadoPersonasConDepartamento()
         {
+            listadoPersonasConDepartamento = new ObservableCollection<clsPersonaDepartamento>();
             foreach (clsPersona persona in listadoPersonas)
             {
                 clsDepartamento dept = listadoDepartamentos.FirstOrDefault(dept => dept.Id == persona.IdDept);
