@@ -3,13 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI.Views.VistaListadoPersonas"
              xmlns:vm="clr-namespace:MAUI.ViewModels"
-             BackgroundColor="{AppThemeBinding Dark=#000a1a}">
+             BackgroundColor="{AppThemeBinding Dark=#000a1a}"
+             Padding="10">
 
     <ContentPage.BindingContext>
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
     <StackLayout>
-        
+        <Border StrokeShape="RoundRectangle, 10">
+            <ListView>
+                <ListView.Header>
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*"></Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate></DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
     </StackLayout>
 </ContentPage>
