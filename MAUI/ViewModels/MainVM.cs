@@ -67,7 +67,15 @@ namespace MAUI.ViewModels
                 clsPersona persona1 = new clsPersona(persona.Id, persona.Nombre, persona.Apellidos, departamentoSeleccionado.Id);
                 listadoPersonasCambiadas.Add(persona1);
             }
-            string result = clsUpdateBL.updateListadoPersonas(listadoPersonasCambiadas);
+            string result;
+            try
+            {
+                result = clsUpdateBL.updateListadoPersonas(listadoPersonasCambiadas);
+            }
+            catch
+            {
+                result = "No se pudieron aplicar los cambios.";
+            }
             await Application.Current.MainPage.DisplayAlert("Alerta", result, "Ok");
             llenarListadoPersonas();
             llenarListadoPersonasConDepartamento();

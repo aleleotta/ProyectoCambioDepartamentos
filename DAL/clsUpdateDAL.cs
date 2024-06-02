@@ -20,7 +20,8 @@ namespace DAL
                 conn.Open();
                 cmd = conn.CreateCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "UPDATE Personas SET IDDepartamento = @idDept WHERE ID != @id"; //@idDept y @id se especificaran adentro de un bucle. El listado pasado por parametro no es completo.
+                //@idDept y @id se especificaran adentro de un bucle. El listado pasado por parametro no es completo.
+                cmd.CommandText = "UPDATE Personas SET IDDepartamento = @idDept WHERE ID = @id";
                 foreach (clsPersona persona in listadoPersonasConCambio)
                 {
                     cmd.Parameters.Clear();
