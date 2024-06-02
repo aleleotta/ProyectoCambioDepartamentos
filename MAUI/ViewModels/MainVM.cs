@@ -39,7 +39,6 @@ namespace MAUI.ViewModels
             set
             {
                 listadoPersonasSeleccionadas = value;
-                submit.RaiseCanExecuteChanged();
             }
         }
         public clsDepartamento DepartamentoSeleccionado
@@ -47,7 +46,6 @@ namespace MAUI.ViewModels
             set
             {
                 if (value != null) departamentoSeleccionado = value;
-                submit.RaiseCanExecuteChanged();
             }
         }
         public DelegateCommand Submit
@@ -60,32 +58,45 @@ namespace MAUI.ViewModels
         private async void submit_execute()
         {
             //Objects to use: listadoPersonasSeleccionadas, departamentoSeleccionado
-            List<clsPersona> listadoPersonasCambiadas = new List<clsPersona>();
-            foreach (clsPersonaDepartamento persona in listadoPersonasSeleccionadas)
-            {
-                //Se cambia IdDept por el ID del departamento seleccionado.
-                clsPersona persona1 = new clsPersona(persona.Id, persona.Nombre, persona.Apellidos, departamentoSeleccionado.Id);
-                listadoPersonasCambiadas.Add(persona1);
-            }
             string result;
-            try
+            if (!listadoPersonasSeleccionadas.IsNullOrEmpty() && departamentoSeleccionado != null)
             {
-                result = clsUpdateBL.updateListadoPersonas(listadoPersonasCambiadas);
+                List<clsPersona> listadoPersonasCambiadas = new List<clsPersona>();
+                foreach (clsPersonaDepartamento persona in listadoPersonasSeleccionadas)
+                {
+                    //Se cambia IdDept por el ID del departamento seleccionado.
+                    clsPersona persona1 = new clsPersona(persona.Id, persona.Nombre, persona.Apellidos, departamentoSeleccionado.Id);
+                    listadoPersonasCambiadas.Add(persona1);
+                }
+                try
+                {
+                    result = clsUpdateBL.updateListadoPersonas(listadoPersonasCambiadas);
+                }
+                catch
+                {
+                    result = "No se pudieron aplicar los cambios.";
+                }
+                await Application.Current.MainPage.DisplayAlert("Alerta", result, "Ok");
+                llenarListadoPersonas();
+                llenarListadoPersonasConDepartamento();
+                OnPropertyChanged("ListadoPersonas");
+                OnPropertyChanged("ListadoPersonasConDepartamento");
             }
-            catch
+            else if (listadoPersonasSeleccionadas.IsNullOrEmpty() && departamentoSeleccionado != null)
             {
-                result = "No se pudieron aplicar los cambios.";
+                result = "Ninguna persona fue seleccionada.";
+                await Application.Current.MainPage.DisplayAlert("Error", result, "Ok");
             }
-            await Application.Current.MainPage.DisplayAlert("Alerta", result, "Ok");
-            llenarListadoPersonas();
-            llenarListadoPersonasConDepartamento();
-            OnPropertyChanged("ListadoPersonas");
-            OnPropertyChanged("ListadoPersonasConDepartamento");
-        }
-        private bool submit_canExecute()
-        {
-            if (departamentoSeleccionado == null || listadoPersonasSeleccionadas.IsNullOrEmpty()) return false;
-            else return true;
+            else if (!listadoPersonasSeleccionadas.IsNullOrEmpty() && departamentoSeleccionado == null)
+            {
+                result = "Ningun departamento fue seleccionado.";
+                await Application.Current.MainPage.DisplayAlert("Error", result, "Ok");
+            }
+            else
+            {
+                result = "Ninguna persona ni departamento fueron seleccionados.";
+                await Application.Current.MainPage.DisplayAlert("Error", result, "Ok");
+            }
         }
         #endregion
 
@@ -96,7 +107,7 @@ namespace MAUI.ViewModels
             llenarListadoDepartamentos();
             llenarListadoPersonasConDepartamento();
             listadoPersonasSeleccionadas = new ObservableCollection<object>();
-            submit = new DelegateCommand(submit_execute, submit_canExecute);
+            submit = new DelegateCommand(submit_execute);
         }
         #endregion
 

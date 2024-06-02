@@ -4,7 +4,7 @@
              x:Class="MAUI.Views.VistaListadoPersonas"
              xmlns:vm="clr-namespace:MAUI.ViewModels"
              BackgroundColor="{AppThemeBinding Dark=#000a1a}"
-             Padding="15">
+             Padding="20">
 
     <ContentPage.BindingContext>
         <vm:MainVM/>
@@ -14,7 +14,7 @@
         <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433, Light=#50E2E6}" VerticalOptions="FillAndExpand">
             <ScrollView>
                 <StackLayout>
-                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10" BackgroundColor="{AppThemeBinding Light=#58f8fc, Dark=#012254}">
                         <Label Text="Nombre" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
                         <Label Text="Apellidos" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
                         <Label Text="Departamento" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
@@ -36,14 +36,19 @@
                 </StackLayout>
             </ScrollView>
         </Border>
-        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+        <HorizontalStackLayout Spacing="10">
             <Label Text="Departamento para cambiar:" FontSize="{OnPlatform WinUI=Medium, Android=Small}" VerticalOptions="Center"/>
             <Picker ItemsSource="{Binding ListadoDepartamentos}"
                     ItemDisplayBinding="{Binding NombreDept}"
                     SelectedItem="{Binding DepartamentoSeleccionado}"
+                    BackgroundColor="{AppThemeBinding Dark=#012052, Light=#50E2E6}"
                     MinimumWidthRequest="100"
                     VerticalOptions="Center"/>
         </HorizontalStackLayout>
-        <Button Text="Submit" BackgroundColor="Navy" TextColor="White" MaximumWidthRequest="100" Command="{Binding Submit}"/>
+        <Button Text="Submit"
+                BackgroundColor="{AppThemeBinding Dark=#012052, Light=#50E2E6}"
+                TextColor="{AppThemeBinding Dark=White}"
+                MaximumWidthRequest="100"
+                Command="{Binding Submit}"/>
     </StackLayout>
 </ContentPage>

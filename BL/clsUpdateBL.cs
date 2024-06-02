@@ -14,13 +14,13 @@ namespace BL
         public static string updateListadoPersonas(List<clsPersona> listadoPersonasConCambio)
         {
             string result;
-            if (DateTime.Now.DayOfWeek != DayOfWeek.Monday)
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
             {
                 result = clsUpdateDAL.updateListadoPersonas(listadoPersonasConCambio);
             }
             else
             {
-                result = "No se pueden cambiar los departamentos durante el Domingo.";
+                result = "No se pueden cambiar los departamentos durante un Domingo.";
             }
             return result;
         }
