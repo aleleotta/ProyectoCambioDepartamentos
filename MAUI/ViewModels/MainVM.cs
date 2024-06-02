@@ -55,6 +55,12 @@ namespace MAUI.ViewModels
         #endregion
 
         #region Command Executers
+        /// <summary>
+        /// Comprueba diferentes condiciones para ver si el viewmodel tiene ambos el listado parcial de personas y el departamento que hay que cambiar.
+        /// Si el metodo tiene todo lo que necesita, empieza a cambiar el ID de departamento de todas las personas seleccionadas y hace un intento
+        /// para subir todas las personas a la base de datos con los datos actualizados.
+        /// Al final la funcion que se llama desde la BL devuelve un resultado de tipo string y se muestra en el DisplayAlert para el usuario.
+        /// </summary>
         private async void submit_execute()
         {
             //Objects to use: listadoPersonasSeleccionadas, departamentoSeleccionado
