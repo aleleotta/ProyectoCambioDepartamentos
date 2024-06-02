@@ -57,9 +57,22 @@ namespace MAUI.ViewModels
         #endregion
 
         #region Command Executers
-        private void submit_execute()
+        private async void submit_execute()
         {
-            //TODO
+            //Objects to use: listadoPersonasSeleccionadas, departamentoSeleccionado
+            List<clsPersona> listadoPersonasCambiadas = new List<clsPersona>();
+            foreach (clsPersonaDepartamento persona in listadoPersonasSeleccionadas)
+            {
+                //Se cambia IdDept por el ID del departamento seleccionado.
+                clsPersona persona1 = new clsPersona(persona.Id, persona.Nombre, persona.Apellidos, departamentoSeleccionado.Id);
+                listadoPersonasCambiadas.Add(persona1);
+            }
+            string result = clsUpdateBL.updateListadoPersonas(listadoPersonasCambiadas);
+            await Application.Current.MainPage.DisplayAlert("Alerta", result, "Ok");
+            llenarListadoPersonas();
+            llenarListadoPersonasConDepartamento();
+            OnPropertyChanged("ListadoPersonas");
+            OnPropertyChanged("ListadoPersonasConDepartamento");
         }
         private bool submit_canExecute()
         {
@@ -87,7 +100,7 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoPersonas = new List<clsPersona>(clsListadosBL.getListadoPersonas());
+                listadoPersonas = new List<clsPersona>(clsGetBL.getListadoPersonas());
             }
             catch
             {
@@ -102,7 +115,7 @@ namespace MAUI.ViewModels
         {
             try
             {
-                listadoDepartamentos = new List<clsDepartamento>(clsListadosBL.getListadoDepartamentos());
+                listadoDepartamentos = new List<clsDepartamento>(clsGetBL.getListadoDepartamentos());
             }
             catch
             {

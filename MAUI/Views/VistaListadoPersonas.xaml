@@ -12,28 +12,29 @@
 
     <StackLayout Spacing="20">
         <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433, Light=#50E2E6}" VerticalOptions="FillAndExpand">
-            <StackLayout>
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                    <Label Text="Nombre" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-                    <Label Text="Apellidos" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-                    <Label Text="Departamento" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
-                </Grid>
-                <Line/>
-                <CollectionView ItemsSource="{Binding ListadoPersonasConDepartamento}"
+            <ScrollView>
+                <StackLayout>
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                        <Label Text="Nombre" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                        <Label Text="Apellidos" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                        <Label Text="Departamento" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+                    </Grid>
+                    <CollectionView ItemsSource="{Binding ListadoPersonasConDepartamento}"
                                 SelectedItems="{Binding ListadoPersonasSeleccionadas}"
                                 SelectionMode="Multiple"
                                 EmptyView="No hay ninguna persona en el listado.">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                                <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-                                <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-                                <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                                    <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                                    <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                                    <Label Text="{Binding DepartamentoAsignado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
         </Border>
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
             <Label Text="Departamento para cambiar:" FontSize="{OnPlatform WinUI=Medium, Android=Small}" VerticalOptions="Center"/>
