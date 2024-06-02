@@ -4,33 +4,45 @@
              x:Class="MAUI.Views.VistaListadoPersonas"
              xmlns:vm="clr-namespace:MAUI.ViewModels"
              BackgroundColor="{AppThemeBinding Dark=#000a1a}"
-             Padding="10">
+             Padding="15">
 
     <ContentPage.BindingContext>
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
     <StackLayout Spacing="20">
-        <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433}" VerticalOptions="FillAndExpand">
-            <CollectionView ItemsSource="{Binding ListadoPersonasConDepartamento}">
-                <CollectionView.Header>
-                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                        <Label Text="Nombre" FontSize="Medium" HorizontalOptions="Center" Grid.Column="0"/>
-                        <Label Text="Apellidos" FontSize="Medium" HorizontalOptions="Center" Grid.Column="1"/>
-                        <Label Text="Departamento" FontSize="Medium" HorizontalOptions="Center" Grid.Column="2"/>
-                    </Grid>
-                </CollectionView.Header>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
-                            <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
-                            <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
-                            <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+        <Border StrokeShape="RoundRectangle, 10" BackgroundColor="{AppThemeBinding Dark=#001433, Light=#50E2E6}" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                    <Label Text="Nombre" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                    <Label Text="Apellidos" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                    <Label Text="Departamento" FontSize="{OnPlatform WinUI=Medium, Android=Small}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+                </Grid>
+                <Line/>
+                <CollectionView ItemsSource="{Binding ListadoPersonasConDepartamento}"
+                                SelectedItems="{Binding ListadoPersonasSeleccionadas}"
+                                SelectionMode="Multiple"
+                                EmptyView="No hay ninguna persona en el listado.">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="*" Padding="10">
+                                <Label Text="{Binding Nombre}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0"/>
+                                <Label Text="{Binding Apellidos}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1"/>
+                                <Label Text="{Binding DepartamentoSeleccionado.NombreDept}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </Border>
-        <Button Text="Submit" BackgroundColor="Navy" TextColor="White" MaximumWidthRequest="100"/>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="Departamento para cambiar:" FontSize="{OnPlatform WinUI=Medium, Android=Small}" VerticalOptions="Center"/>
+            <Picker ItemsSource="{Binding ListadoDepartamentos}"
+                    ItemDisplayBinding="{Binding NombreDept}"
+                    SelectedItem="{Binding DepartamentoSeleccionado}"
+                    MinimumWidthRequest="100"
+                    VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <Button Text="Submit" BackgroundColor="Navy" TextColor="White" MaximumWidthRequest="100" Command="{Binding Submit}"/>
     </StackLayout>
 </ContentPage>

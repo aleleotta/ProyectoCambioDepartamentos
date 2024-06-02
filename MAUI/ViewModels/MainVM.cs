@@ -5,6 +5,7 @@ using BL;
 using Entities;
 using Models;
 using MAUI.Utilities;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MAUI.ViewModels
 {
@@ -14,6 +15,8 @@ namespace MAUI.ViewModels
         private List<clsPersona> listadoPersonas;
         private List<clsDepartamento> listadoDepartamentos;
         private ObservableCollection<clsPersonaDepartamento> listadoPersonasConDepartamento;
+        private ObservableCollection<object> listadoPersonasSeleccionadas;
+        private clsDepartamento departamentoSeleccionado;
         private DelegateCommand submit;
         #endregion
 
@@ -30,6 +33,23 @@ namespace MAUI.ViewModels
         {
             get => listadoPersonasConDepartamento;
         }
+        public ObservableCollection<object> ListadoPersonasSeleccionadas
+        {
+            get => listadoPersonasSeleccionadas;
+            set
+            {
+                listadoPersonasSeleccionadas = value;
+                submit.RaiseCanExecuteChanged();
+            }
+        }
+        public clsDepartamento DepartamentoSeleccionado
+        {
+            set
+            {
+                if (value != null) departamentoSeleccionado = value;
+                submit.RaiseCanExecuteChanged();
+            }
+        }
         public DelegateCommand Submit
         {
             get => submit;
@@ -43,7 +63,8 @@ namespace MAUI.ViewModels
         }
         private bool submit_canExecute()
         {
-            return true;
+            if (departamentoSeleccionado == null || listadoPersonasSeleccionadas.IsNullOrEmpty()) return false;
+            else return true;
         }
         #endregion
 
@@ -53,6 +74,7 @@ namespace MAUI.ViewModels
             llenarListadoPersonas();
             llenarListadoDepartamentos();
             llenarListadoPersonasConDepartamento();
+            listadoPersonasSeleccionadas = new ObservableCollection<object>();
             submit = new DelegateCommand(submit_execute, submit_canExecute);
         }
         #endregion

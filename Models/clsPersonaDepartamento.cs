@@ -4,20 +4,20 @@ namespace Models
 {
     public class clsPersonaDepartamento: clsPersona
     {
-        private clsDepartamento departamentoSeleccionado; //Por defecto tendra el departamento ya asignado por la base de datos.
+        private clsDepartamento departamentoAsignado; //Por defecto tendra el departamento ya asignado por la base de datos.
 
         public clsDepartamento DepartamentoSeleccionado
         {
-            get => departamentoSeleccionado;
+            get => departamentoAsignado;
             set
             {
-                if (value != null) departamentoSeleccionado = value;
+                if (value != null) departamentoAsignado = value;
             }
         }
 
         public clsPersonaDepartamento(clsPersona persona, clsDepartamento departamentoSeleccionado): base(persona)
         {
-            this.departamentoSeleccionado = new clsDepartamento(departamentoSeleccionado);
+            this.departamentoAsignado = new clsDepartamento(departamentoSeleccionado);
         }
     }
 }
