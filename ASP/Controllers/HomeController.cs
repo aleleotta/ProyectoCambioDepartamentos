@@ -1,7 +1,5 @@
 ﻿using ASP.Models;
 using Microsoft.AspNetCore.Mvc;
-using Entities;
-using BL;
 
 namespace ASP.Controllers
 {
@@ -14,7 +12,16 @@ namespace ASP.Controllers
 
         public IActionResult CambioDepartamento()
         {
-            return View();
+            clsListadoPersonaDepartamento modelo;
+            try
+            {
+                modelo = new clsListadoPersonaDepartamento();
+            }
+            catch
+            {
+                return View("ErrorGet");
+            }
+            return View(modelo);
         }
     }
 }
