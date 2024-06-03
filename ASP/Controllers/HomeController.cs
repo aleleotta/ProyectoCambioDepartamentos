@@ -1,5 +1,6 @@
 ﻿using ASP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace ASP.Controllers
 {
@@ -23,5 +24,14 @@ namespace ASP.Controllers
             }
             return View(modelo);
         }
+
+        [HttpPost]
+        public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, bool isChecked)
+        {
+            List<clsPersonaDepartamento> listadoPersonasSeleccionadas = new List<clsPersonaDepartamento>();
+            //TODO
+            return View();
+        }
+
     }
 }
