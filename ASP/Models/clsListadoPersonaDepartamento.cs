@@ -10,6 +10,7 @@ namespace ASP.Models
         private List<clsDepartamento> listadoDepartamentos;
         private List<clsPersonaDepartamento> listadoPersonasConDepartamento;
 
+        public List<clsPersona> ListadoPersonas { get => listadoPersonas; }
         public List<clsDepartamento> ListadoDepartamentos { get => listadoDepartamentos; }
         public List<clsPersonaDepartamento> ListadoPersonasConDepartamento { get => listadoPersonasConDepartamento; }
 

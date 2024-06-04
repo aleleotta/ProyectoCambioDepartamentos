@@ -14,6 +14,7 @@ namespace DAL
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = clsConnection.getConnection();
             SqlCommand cmd;
+            int affectedRows = 0;
             string result = "";
             try
             {
@@ -28,14 +29,15 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@id", persona.Id);
                     cmd.Parameters.AddWithValue("@idDept", persona.IdDept);
                     cmd.ExecuteNonQuery();
+                    affectedRows++;
                 }
                 conn.Close();
                 conn.Dispose();
-                result = "Operacion terminada correctamente.";
+                result = $"Operacion terminada correctamente.\nLineas afectadas: {affectedRows}";
             }
             catch (Exception)
             {
-                result = "No se pudieron aplicar los cambios.";
+                result = $"No se pudieron aplicar los cambios.";
             }
             finally
             {

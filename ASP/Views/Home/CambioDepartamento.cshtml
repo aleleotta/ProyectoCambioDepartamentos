@@ -5,7 +5,7 @@
 
 <form asp-action="CambioDepartamento">
     <select name="IdDepartamentoSeleccionado">
-        <option value="">Selecciona...</option>
+        <option value="0">Seleccionar...</option>
         @foreach (Entities.clsDepartamento departamento in Model.ListadoDepartamentos)
         {
             <option value="@departamento.Id">@departamento.NombreDept</option>
@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (clsPersonaDepartamentoCheck persona in Model.ListadoPersonasConDepartamento)
+            @foreach (Models.clsPersonaDepartamento persona in Model.ListadoPersonasConDepartamento)
             {
                 <tr>
                     <td>@Html.DisplayFor(item => persona.Nombre)</td>

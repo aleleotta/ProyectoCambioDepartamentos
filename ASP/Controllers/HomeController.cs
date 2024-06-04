@@ -1,5 +1,8 @@
 ﻿using ASP.Models;
+using BL;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Models;
 
 namespace ASP.Controllers
@@ -28,9 +31,50 @@ namespace ASP.Controllers
         [HttpPost]
         public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> idPersonaSeleccionada)
         {
-            List<clsPersonaDepartamento> listadoPersonasSeleccionadas = new List<clsPersonaDepartamentoCheck>();
-            //TODO
-            return View("Results/ErrorActualizacion");
+            if (idDepartamentoSeleccionado > 0 && !idPersonaSeleccionada.IsNullOrEmpty())
+            {
+                List<clsPersona> listadoPersonasSeleccionadas = new List<clsPersona>();
+                try
+                {
+                    List<clsPersona> listadoPersonas = new List<clsPersona>(clsGetBL.getListadoPersonas());
+                    foreach (clsPersona persona in listadoPersonas)
+                    {
+                        foreach (int idPersona in idPersonaSeleccionada)
+                        {
+                            if (idPersona == persona.Id)
+                            {
+                                persona.IdDept = idDepartamentoSeleccionado;
+                                listadoPersonasSeleccionadas.Add(persona);
+                            }
+                        }
+                    }
+                    try
+                    {
+                        clsUpdateBL.updateListadoPersonas(listadoPersonas);
+                    }
+                    catch
+                    {
+                        return View("Results/ErrorActualizacion");
+                    }
+                    return View("Results/ExitoActualizacion");
+                }
+                catch
+                {
+                    return View("Results/ErrorGet");
+                }
+            }
+            else if (idDepartamentoSeleccionado > 0 && idPersonaSeleccionada.IsNullOrEmpty())
+            {
+                return View("Results/ErrorNingunaPersona");
+            }
+            else if (idDepartamentoSeleccionado == 0 && !idPersonaSeleccionada.IsNullOrEmpty())
+            {
+                return View("Results/ErrorNingunDepartamento");
+            }
+            else
+            {
+                return View("Results/ErrorNingunaPersonaNiDepartamento");
+            }
         }
 
     }
