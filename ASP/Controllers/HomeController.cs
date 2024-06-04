@@ -20,7 +20,7 @@ namespace ASP.Controllers
             }
             catch
             {
-                return View("ErrorGet");
+                return View("Results/ErrorGet");
             }
             return View(modelo);
         }

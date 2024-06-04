@@ -19,5 +19,10 @@ namespace Models
         {
             this.departamentoAsignado = new clsDepartamento(departamentoAsignado);
         }
+
+        public clsPersonaDepartamento(clsPersonaDepartamento persona): base(persona)
+        {
+            departamentoAsignado = persona.DepartamentoAsignado;
+        }
     }
 }

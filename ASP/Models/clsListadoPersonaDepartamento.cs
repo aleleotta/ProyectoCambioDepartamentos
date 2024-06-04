@@ -26,7 +26,7 @@ namespace ASP.Models
         {
             listadoPersonas = new List<clsPersona>(clsGetBL.getListadoPersonas());
             listadoDepartamentos = new List<clsDepartamento>(clsGetBL.getListadoDepartamentos());
-            listadoPersonasConDepartamento = new List<clsPersonaDepartamento>();
+            listadoPersonasConDepartamento = new List<clsPersonaDepartamentoCheck>();
             foreach (clsPersona persona in listadoPersonas)
             {
                 var dept = listadoDepartamentos.FirstOrDefault(dept => dept.Id == persona.IdDept);
