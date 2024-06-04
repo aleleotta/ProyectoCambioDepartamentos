@@ -26,7 +26,7 @@ namespace ASP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, bool isChecked)
+        public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> listadoIdPersona)
         {
             List<clsPersonaDepartamento> listadoPersonasSeleccionadas = new List<clsPersonaDepartamento>();
             //TODO

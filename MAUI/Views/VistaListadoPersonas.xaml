@@ -45,10 +45,10 @@
                     MinimumWidthRequest="100"
                     VerticalOptions="Center"/>
         </HorizontalStackLayout>
-        <Button Text="Submit"
+        <Button Text="Cambiar departamento"
                 BackgroundColor="{AppThemeBinding Dark=#012052, Light=#50E2E6}"
                 TextColor="{AppThemeBinding Dark=White}"
-                MaximumWidthRequest="100"
+                MaximumWidthRequest="200"
                 Command="{Binding Submit}"/>
     </StackLayout>
 </ContentPage>
