@@ -8,10 +8,10 @@ namespace ASP.Models
     {
         private List<clsPersona> listadoPersonas;
         private List<clsDepartamento> listadoDepartamentos;
-        private List<clsPersonaDepartamentoCheck> listadoPersonasConDepartamento;
+        private List<clsPersonaDepartamento> listadoPersonasConDepartamento;
 
         public List<clsDepartamento> ListadoDepartamentos { get => listadoDepartamentos; }
-        public List<clsPersonaDepartamentoCheck> ListadoPersonasConDepartamento { get => listadoPersonasConDepartamento; }
+        public List<clsPersonaDepartamento> ListadoPersonasConDepartamento { get => listadoPersonasConDepartamento; }
 
         public clsListadoPersonaDepartamento()
         {
@@ -26,14 +26,14 @@ namespace ASP.Models
         {
             listadoPersonas = new List<clsPersona>(clsGetBL.getListadoPersonas());
             listadoDepartamentos = new List<clsDepartamento>(clsGetBL.getListadoDepartamentos());
-            listadoPersonasConDepartamento = new List<clsPersonaDepartamentoCheck>();
+            listadoPersonasConDepartamento = new List<clsPersonaDepartamento>();
             foreach (clsPersona persona in listadoPersonas)
             {
                 var dept = listadoDepartamentos.FirstOrDefault(dept => dept.Id == persona.IdDept);
                 if (dept != null)
                 {
-                    clsPersonaDepartamentoCheck personaConDepartamentoCheck = new clsPersonaDepartamentoCheck(new clsPersonaDepartamento(persona, dept));
-                    listadoPersonasConDepartamento.Add(personaConDepartamentoCheck);
+                    clsPersonaDepartamento personaConDepartamento = new clsPersonaDepartamento(persona, dept);
+                    listadoPersonasConDepartamento.Add(personaConDepartamento);
                 }
             }
         }

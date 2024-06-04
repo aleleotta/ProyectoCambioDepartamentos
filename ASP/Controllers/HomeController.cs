@@ -26,11 +26,11 @@ namespace ASP.Controllers
         }
 
         [HttpPost]
-        public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> listadoIdPersona)
+        public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> idPersonaSeleccionada)
         {
-            List<clsPersonaDepartamento> listadoPersonasSeleccionadas = new List<clsPersonaDepartamento>();
+            List<clsPersonaDepartamento> listadoPersonasSeleccionadas = new List<clsPersonaDepartamentoCheck>();
             //TODO
-            return View();
+            return View("Results/ErrorActualizacion");
         }
 
     }

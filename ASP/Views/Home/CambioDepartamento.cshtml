@@ -21,13 +21,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Models.clsPersonaDepartamento persona in Model.ListadoPersonasConDepartamento)
+            @foreach (clsPersonaDepartamentoCheck persona in Model.ListadoPersonasConDepartamento)
             {
                 <tr>
                     <td>@Html.DisplayFor(item => persona.Nombre)</td>
                     <td>@Html.DisplayFor(item => persona.Apellidos)</td>
                     <td>@Html.DisplayFor(item => persona.DepartamentoAsignado.NombreDept)</td>
-                    <td><input type="checkbox" name="IsChecked"/></td>
+                    <td>
+                        <input type="checkbox" name="IdPersonaSeleccionada" value="@persona.Id"/>
+                    </td>
                 </tr>
             }
         </tbody>
