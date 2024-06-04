@@ -14,7 +14,7 @@ namespace BL
         public static string updateListadoPersonas(List<clsPersona> listadoPersonasConCambio)
         {
             string result;
-            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Tuesday)
             {
                 result = clsUpdateDAL.updateListadoPersonas(listadoPersonasConCambio);
             }
