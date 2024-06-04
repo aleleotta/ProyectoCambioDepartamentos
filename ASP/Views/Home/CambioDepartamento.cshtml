@@ -5,6 +5,7 @@
 
 <form asp-action="CambioDepartamento">
     <select name="IdDepartamentoSeleccionado">
+        <option value="">Selecciona...</option>
         @foreach (Entities.clsDepartamento departamento in Model.ListadoDepartamentos)
         {
             <option value="@departamento.Id">@departamento.NombreDept</option>
