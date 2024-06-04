@@ -9,11 +9,17 @@ namespace ASP.Controllers
 {
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Crea una nueva istancia del modelo que contiene todos los listados
+        /// y se manda a la vista del cambio de departamentos.
+        /// </summary>
+        /// <returns>La vista con el modelo mandado.</returns>
         public IActionResult CambioDepartamento()
         {
             clsListadoPersonaDepartamento modelo;
@@ -28,7 +34,16 @@ namespace ASP.Controllers
             return View(modelo);
         }
 
+        /// <summary>
+        /// Coge los datos de los names como parametros y empieza a crear el listado de personas cambiadas con la clase clsPersona
+        /// y luego lo manda a la base de datos.
+        /// Por cada caso se devuelve una pagina de error o exito.
+        /// </summary>
+        /// <param name="idDepartamentoSeleccionado">El id de departamento que se usara para cambiar de departamento a las personas seleccionadas.</param>
+        /// <param name="idPersonaSeleccionada">El listado de idPersona que se coge a traves de los CheckBoxes.</param>
+        /// <returns></returns>
         [HttpPost]
+        [ActionName("ActualizarPersonasConDepartamento")]
         public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> idPersonaSeleccionada)
         {
             if (idDepartamentoSeleccionado > 0 && !idPersonaSeleccionada.IsNullOrEmpty())
