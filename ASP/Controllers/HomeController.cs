@@ -43,7 +43,6 @@ namespace ASP.Controllers
         /// <param name="idPersonaSeleccionada">El listado de idPersona que se coge a traves de los CheckBoxes.</param>
         /// <returns></returns>
         [HttpPost]
-        [ActionName("ActualizarPersonasConDepartamento")]
         public IActionResult CambioDepartamento(int idDepartamentoSeleccionado, List<int> idPersonaSeleccionada)
         {
             if (idDepartamentoSeleccionado > 0 && !idPersonaSeleccionada.IsNullOrEmpty())
